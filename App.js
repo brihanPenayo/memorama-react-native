@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Cards from './Cards';
+import React, { useState } from 'react';
 const emojis = [
   "🐶",
   "👀",
@@ -14,12 +15,13 @@ const emojis = [
 ]
 
 export default function App() {
+  const [board, setBoard] = React.useState(()=>shuffleArray([...emojis, ...emojis]))
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Memorama</Text>
-      {emojis.map((card, index)=>{
+      {board.map((card, index)=>{
         return (
-          <Cards key={index}><Text>{card}</Text></Cards>
+          <Cards key={index}>{card}</Cards>
         )
       })}
       <StatusBar style="light" />
