@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Cards from './Cards';
-import React, { useState } from 'react';
+import {useState} from 'react';
 const emojis = [
   "🐶",
   "👀",
@@ -15,15 +15,17 @@ const emojis = [
 ]
 
 export default function App() {
-  const [board, setBoard] = React.useState(()=>shuffleArray([...emojis, ...emojis]))
+  const [board, setBoard] = useState(()=>shuffleArray([...emojis, ...emojis]))
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Memorama</Text>
+      <View style={styles.viewSt}>
       {board.map((card, index)=>{
         return (
-          <Cards key={index}>{card}</Cards>
+          <Cards onPress={()=>alert("I like You and Tora, and Mochis")} key={index}>{card}</Cards>
         )
       })}
+      </View>
       <StatusBar style="light" />
     </View>
   );
@@ -40,6 +42,14 @@ const styles = StyleSheet.create({
     fontSize: 32,
     color: "white",
     fontWeight: 800
+  },
+  viewSt: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 40,
+    gap: 10,
+    alignContent:'center',
+    justifyContent: 'center'
   }
 });
 
