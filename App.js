@@ -46,7 +46,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Memorama</Text>
+      <Text style={styles.title}>{winner() ? 'Has Ganado!' : 'Memorama'}</Text>
       <Text style={styles.movement}>Movimientos: {movement}</Text>
       <View style={styles.viewSt}>
         {board.map((card, index) => {
